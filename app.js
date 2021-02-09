@@ -97,7 +97,37 @@ if(!err){
 })
 
 
-});
+})
+
+.patch(function(req,res){
+
+Article.update({title:req.params.articleTitle},{$set:req.body},function(err){
+
+if(!err){
+
+  res.send("the article is successfully updated.")
+}else{
+
+  res.send(err);
+}
+
+})
+
+})
+
+.delete(function(req,res){
+
+Article.deleteOne({title:req.params.articleTitle},function(err){
+
+  if(!err){
+    res.send("The article is successfully deleted.")
+  }else{
+
+    res.send(err)
+  }
+})
+
+})
 
 
 
